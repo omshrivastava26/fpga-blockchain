@@ -49,8 +49,8 @@ create_bram_inst
 	.transact_value	(transact_value	),
 	.transact_kind	(transact_kind	),
 	.value_addr		(value_addr		),
-	.updated_value	(updated_value	)
-	
+	.updated_value	(updated_value	),
+	.value          (value          )
 );
 	
 initial
@@ -59,7 +59,7 @@ begin
 	$dumpvars(0, create_bram_tb);
 	clk = 1;
 	
-	#3000;
+	#6000;
 	$finish;
 	 
 end
@@ -77,7 +77,7 @@ begin
 	write_enable	<= 0;
 
 	#100;
-    
+    /*
 	signal<=0;
 	key<=249;
 	transact_value<=0;
@@ -96,6 +96,21 @@ begin
     #100;
 	$display("%d", updated_value);
 	$display("tested transact");
+    */
+    //#100;
+
+    key<= 279;
+    signal<= 1;
+    value<= 7623;
+    #200;
+    $display("%d", updated_value);
+    #100;
+    key<= 524;
+    signal<= 1;
+    value<= 3423;
+    #200;
+    $display("%d", updated_value);
+
 	
 end
 

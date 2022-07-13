@@ -113,21 +113,33 @@ module create_bram
             end
          end
       end else begin
+         $display("here i am");
         if (signal==1) begin
-         for(i = 0; ram_name_VALUE[i] != 0; i= i+1)
+         $display("detected insert command");
+         $display("%d", ram_name_VALUE[0]);
+         for(i = 1; ram_name_VALUE[i] != 0; i= i+1) begin
+            $display("entered index search loop");
+         end
 
          ram_name_VALUE[i] = value;
+         $display("%d ramnamevalue16, %d = i", ram_name_VALUE[i], i );
          val_add_temp1 = i;
 
          //insert
          term_flag = 0;
             for( i = 0; i<11 && term_flag == 0; i = i+1) begin
+               $display("entered loop");
                if(ram_name_HASH_1[hash1] == 0) begin
+                  $display("reached hash1 check");
                   ram_name_HASH_1[hash1] = key_in;
                   ram_name_HASH_1_VALADD[hash1] = val_add_temp1;
                   term_flag = 1;
+                  $display("%d", ram_name_HASH_1[hash1]);
+                  $display("%d", val_add_temp1);
+                  updated_value <=  ram_name_VALUE[ram_name_HASH_1_VALADD[hash1]];
                end
                else begin
+                  $display("went here");
                   key_temp = ram_name_HASH_1[hash1];
                   val_add_temp2 = ram_name_HASH_1_VALADD[hash1];
                   ram_name_HASH_1[hash1] = key_in;
@@ -135,9 +147,11 @@ module create_bram
                   key_in = key_temp;
                   val_add_temp1 = val_add_temp2;
                   if(ram_name_HASH_2[hash2] == 0) begin
+                     $display("and here");
                      ram_name_HASH_2[hash2] = key_in;
                      ram_name_HASH_2_VALADD[hash2] = val_add_temp1;
                      term_flag = 1;
+                     updated_value <=  ram_name_VALUE[ram_name_HASH_2_VALADD[hash2]];
                   end
                   else begin
                      key_temp = ram_name_HASH_2[hash2];

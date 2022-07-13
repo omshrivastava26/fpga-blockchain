@@ -64,6 +64,11 @@ initial begin
     #10;
     key=892;
 
+    #10;
+    key = 279;
+
+    #10;
+    key = 524;
     
 end 
 endmodule
