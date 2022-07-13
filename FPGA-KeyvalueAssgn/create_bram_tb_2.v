@@ -1,5 +1,5 @@
 `timescale 1ns/1ns
-`include "create_bram.v"
+`include "create_bram_2.v"
 module create_bram_tb;
 
 parameter RAM_WIDTH = 32;
@@ -54,10 +54,18 @@ create_bram_inst
 	
 initial
 begin
+	$dumpfile("create_bram_2.vcd");
+	$dumpvars(0, create_bram_tb);
 	clk = 1;
 	
-	
+	#1000;
+	$finish;
 	 
+end
+
+always begin
+	clk <= ~clk;
+	#1;
 end
 
 initial
@@ -67,12 +75,12 @@ begin
 	ram_enable		<= 1;
 	write_enable	<= 0;
 
-	#100
-	signal=0;
-	key=249;
-	transact_value=0;
-	transact_kind=0;
-	#100
+	#100;
+	signal<=0;
+	key<=249;
+	transact_value<=0;
+	transact_kind<=0;
+	#100;
 	$display("%d", updated_value);
 
 	

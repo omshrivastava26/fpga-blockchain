@@ -183,15 +183,26 @@ module create_bram
    
      if (signal==0) begin
          //search
+         $display("I reached search");
+         $display("%d", ram_name_HASH_1[hash1]);
          if(ram_name_HASH_1[hash1] == key) begin
+            $display("entered if block");
             value_addr = ram_name_HASH_1_VALADD[hash1];
             updated_value = ram_name_VALUE[value_addr];
          end
          else begin
+            $display("entered else block");
+            $display("%d", ram_name_HASH_2[hash2]);
             if(ram_name_HASH_2[hash2] == key) begin
+               $display("entered if inside else");
                value_addr = ram_name_HASH_2_VALADD[hash2];
+               $display("value address %d", value_addr);
                updated_value = ram_name_VALUE[value_addr];
+               $display("%d ram name Value", ram_name_VALUE[value_addr]);
                $display("%d", updated_value);
+            end
+            else begin
+               $display("something wrong");
             end
          end
       end else begin
