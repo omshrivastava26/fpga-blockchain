@@ -1,5 +1,5 @@
 $date
-	Wed Jul 13 19:15:41 2022
+	Thu Jul 14 22:22:59 2022
 $end
 $version
 	Icarus Verilog
@@ -11,55 +11,57 @@ $scope module create_bram_tb $end
 $var wire 32 ! value_addr [31:0] $end
 $var wire 32 " updated_value [31:0] $end
 $var reg 1 # clk $end
-$var reg 32 $ key [31:0] $end
-$var reg 1 % ram_enable $end
-$var reg 2 & signal [1:0] $end
-$var reg 1 ' transact_kind $end
-$var reg 32 ( transact_value [31:0] $end
-$var reg 32 ) value [31:0] $end
-$var reg 1 * write_enable $end
+$var reg 32 $ i [31:0] $end
+$var reg 32 % key [31:0] $end
+$var reg 1 & ram_enable $end
+$var reg 2 ' signal [1:0] $end
+$var reg 1 ( transact_kind $end
+$var reg 32 ) transact_value [31:0] $end
+$var reg 32 * value [31:0] $end
+$var reg 1 + write_enable $end
 $scope module create_bram_inst $end
 $var wire 1 # clock $end
-$var wire 32 + key [31:0] $end
-$var wire 1 % ram_enable $end
-$var wire 2 , signal [1:0] $end
-$var wire 1 ' transact_kind $end
-$var wire 32 - transact_value [31:0] $end
-$var wire 32 . value [31:0] $end
-$var wire 1 * write_enable $end
-$var wire 32 / hash2 [31:0] $end
-$var wire 32 0 hash1 [31:0] $end
-$var reg 32 1 key_in [31:0] $end
-$var reg 32 2 key_temp [31:0] $end
-$var reg 1 3 term_flag $end
-$var reg 32 4 updated_value [31:0] $end
-$var reg 32 5 val_add_temp1 [31:0] $end
-$var reg 32 6 val_add_temp2 [31:0] $end
-$var reg 32 7 value_addr [31:0] $end
-$var integer 32 8 i [31:0] $end
+$var wire 32 , key [31:0] $end
+$var wire 1 & ram_enable $end
+$var wire 2 - signal [1:0] $end
+$var wire 1 ( transact_kind $end
+$var wire 32 . transact_value [31:0] $end
+$var wire 32 / value [31:0] $end
+$var wire 1 + write_enable $end
+$var wire 32 0 hash2 [31:0] $end
+$var wire 32 1 hash1 [31:0] $end
+$var reg 32 2 key_in [31:0] $end
+$var reg 32 3 key_temp [31:0] $end
+$var reg 1 4 term_flag $end
+$var reg 32 5 updated_value [31:0] $end
+$var reg 32 6 val_add_temp1 [31:0] $end
+$var reg 32 7 val_add_temp2 [31:0] $end
+$var reg 32 8 value_addr [31:0] $end
+$var integer 32 9 i [31:0] $end
 $scope module aat $end
-$var wire 1 9 clk $end
-$var wire 32 : key [31:0] $end
-$var reg 32 ; hash1 [31:0] $end
-$var reg 32 < hash2 [31:0] $end
-$var reg 32 = key_in [31:0] $end
+$var wire 1 : clk $end
+$var wire 32 ; key [31:0] $end
+$var reg 32 < hash1 [31:0] $end
+$var reg 32 = hash2 [31:0] $end
+$var reg 32 > key_in [31:0] $end
 $upscope $end
 $upscope $end
 $upscope $end
 $enddefinitions $end
 #0
 $dumpvars
+bx >
 bx =
 bx <
 bx ;
-bx :
-z9
+z:
+bx 9
 bx 8
 bx 7
 bx 6
 bx 5
-bx 4
-x3
+x4
+bx 3
 bx 2
 bx 1
 bx 0
@@ -67,14 +69,14 @@ bx /
 bx .
 bx -
 bx ,
-bx +
-0*
+0+
+bx *
 bx )
-bx (
-x'
-bx &
-1%
-bx $
+x(
+bx '
+1&
+bx %
+b0 $
 0#
 bx "
 bx !
@@ -278,20 +280,7 @@ $end
 #99
 1#
 #100
-b1100 /
-b1100 <
-b1001 0
-b1001 ;
-b100010111 =
-b100010111 1
-b100010111 :
 0#
-b1110111000111 )
-b1110111000111 .
-b1 &
-b1 ,
-b100010111 $
-b100010111 +
 #101
 1#
 #102
@@ -491,12 +480,20 @@ b100010111 +
 #199
 1#
 #200
+b10001 0
+b10001 =
+b1001 1
+b1001 <
+b1000001100 >
+b1000001100 2
+b1000001100 ;
 0#
-b1110111000111 "
-b1110111000111 4
-13
-b10000 5
-b1 8
+b110101011111 *
+b110101011111 /
+b1 '
+b1 -
+b1000001100 %
+b1000001100 ,
 #201
 1#
 #202
@@ -697,6 +694,16 @@ b1 8
 1#
 #300
 0#
+b1100 0
+b1100 =
+b100010111 >
+b100010111 2
+b100010111 ;
+b10000 7
+b100010111 3
+04
+b10011 6
+b0 9
 #301
 1#
 #302
@@ -717,6 +724,14 @@ b1 8
 1#
 #310
 0#
+b11 1
+b11 <
+b10011 >
+b10011 2
+b10011 ;
+b10001 7
+b10011 3
+b10000 6
 #311
 1#
 #312
@@ -737,6 +752,15 @@ b1 8
 1#
 #320
 0#
+b1101 0
+b1101 =
+b1000 >
+b1000 2
+b1000 ;
+b100 7
+b1000 3
+b1 9
+b10001 6
 #321
 1#
 #322
@@ -757,6 +781,14 @@ b1 8
 1#
 #330
 0#
+b101 1
+b101 <
+b11100 >
+b11100 2
+b11100 ;
+b10010 7
+b11100 3
+b100 6
 #331
 1#
 #332
@@ -777,6 +809,11 @@ b1 8
 1#
 #340
 0#
+b10000101011001110001 "
+b10000101011001110001 5
+14
+b11001 9
+b10010 6
 #341
 1#
 #342
@@ -896,16 +933,7 @@ b1 8
 #399
 1#
 #400
-b10001 /
-b10001 <
-b1000001100 =
-b1000001100 1
-b1000001100 :
 0#
-b110101011111 )
-b110101011111 .
-b1000001100 $
-b1000001100 +
 #401
 1#
 #402
@@ -1106,16 +1134,6 @@ b1000001100 +
 1#
 #500
 0#
-b1100 /
-b1100 <
-b100010111 =
-b100010111 1
-b100010111 :
-b10000 6
-b100010111 2
-13
-b10000 5
-b1 8
 #501
 1#
 #502

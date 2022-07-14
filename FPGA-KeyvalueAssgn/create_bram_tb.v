@@ -16,6 +16,8 @@ reg							transact_kind;
 wire						[31:0]updated_value;
 wire						[31:0]value_addr;
 
+reg[31:0] i;
+
 create_bram
 #(
 	.RAM_WIDTH 		(RAM_WIDTH 		),
@@ -37,7 +39,7 @@ create_bram
 	.HASH_2_VALADD_INIT_START_ADDR(0),
 	.HASH_2_VALADD_INIT_END_ADDR(22),
 	.VALUE_INIT_START_ADDR(0),
-	.VALUE_INIT_END_ADDR(15)
+	.VALUE_INIT_END_ADDR(18)
 )
 create_bram_inst
 (
@@ -58,6 +60,7 @@ begin
 	$dumpfile("create_bram_2.vcd");
 	$dumpvars(0, create_bram_tb);
 	clk = 1;
+    i <= 0;
 	
 	#6000;
 	$finish;
@@ -98,19 +101,56 @@ begin
 	$display("tested transact");
     */
     //#100;
-
+    /*
     key<= 279;
     signal<= 1;
     value<= 7623;
     #200;
     $display("%d", updated_value);
+    */
     #100;
     key<= 524;
     signal<= 1;
     value<= 3423;
     #200;
     $display("%d", updated_value);
-
+    
+    /*
+    #100;
+    key<= 19;
+    signal<= 1;
+    value<= 42167;
+    #200;
+    $display("%d", updated_value);
+    #100;
+    key<= 8;
+    signal<= 1;
+    value<= 85671;
+    #200;
+    $display("%d", updated_value);
+    #100;
+    key<= 28;
+    signal<= 1;
+    value<= 34102;
+    #200;
+    $display("%d", updated_value);
+    
+    $display("showing RAM status");
+    $display("hash table1");
+    for(i = 0; i<11; i= i+1) begin
+        $display("%d    %d", ram_name_HASH_1[i], ram_name_HASH_1_VALADD[i]);
+    end
+    $display("hash table2");
+    for(i = 0; i<22; i= i+1) begin
+        $display("%d    %d", ram_name_HASH_2[i], ram_name_HASH_2_VALADD[i]);
+    end
+    $display("valadd    val");
+    for(i= 0; i<20; i = i+1) begin
+        $display("%d    %d", i, ram_name_VALUE[i]);
+    end
+    */
+    
+    //$display("%d", ram_name_VALUE[10]);
 	
 end
 
