@@ -69,7 +69,7 @@ module create_bram
       $readmemh(VALUE_FILE, ram_name_VALUE, VALUE_INIT_START_ADDR, VALUE_INIT_END_ADDR);
    end
     
-   always @(key or signal) begin
+   always @(key or signal or transact_kind or transact_value) begin
       key_in = key;
       #100;
       
@@ -243,6 +243,7 @@ module create_bram
             end
 
             if(transact_kind == 0) begin
+               //$display("reached the correct transact kind");
                if(ram_name_HASH_1[hash1] == key) begin
                   value_addr = ram_name_HASH_1_VALADD[hash1];
                   updated_value = ram_name_VALUE[value_addr] - transact_value;
@@ -251,6 +252,7 @@ module create_bram
                else begin
                   if(ram_name_HASH_2[hash2] == key) begin
                      value_addr = ram_name_HASH_2_VALADD[hash2];
+                     //$display("reached the right place");
                      updated_value = ram_name_VALUE[value_addr] - transact_value;
                      ram_name_VALUE[value_addr] = updated_value;
                   end

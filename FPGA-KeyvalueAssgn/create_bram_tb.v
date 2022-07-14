@@ -62,7 +62,7 @@ begin
 	clk = 1;
     i <= 0;
 	
-	#6000;
+	#16000;
 	$finish;
 	 
 end
@@ -80,7 +80,7 @@ begin
 	write_enable	<= 0;
 
 	#100;
-    /*
+    
 	signal<=0;
 	key<=249;
 	transact_value<=0;
@@ -91,66 +91,36 @@ begin
     $display("tested search");
     #100;
     
+    signal<=0;
+	key<=892;
+	#100;
+    #100;
+	$display("%d", updated_value);
+    $display("tested search");
+
     key<= 249;
     signal <= 2;
     transact_kind<= 1;
     transact_value<= 100;
     #100;
     #100;
-	$display("%d", updated_value);
+	$display("%d - updated value", updated_value);
 	$display("tested transact");
-    */
-    //#100;
-    /*
-    key<= 279;
-    signal<= 1;
-    value<= 7623;
-    #200;
-    $display("%d", updated_value);
-    */
+    
+    key<= 249;
+    signal <= 2;
+    transact_kind<= 0;
+    transact_value<= 100;
+    #100;
+    #100;
+	$display("%d - updated value", updated_value);
+	$display("tested transact");
+    
     #100;
     key<= 524;
     signal<= 1;
     value<= 3423;
     #200;
-    $display("%d", updated_value);
-    
-    /*
-    #100;
-    key<= 19;
-    signal<= 1;
-    value<= 42167;
-    #200;
-    $display("%d", updated_value);
-    #100;
-    key<= 8;
-    signal<= 1;
-    value<= 85671;
-    #200;
-    $display("%d", updated_value);
-    #100;
-    key<= 28;
-    signal<= 1;
-    value<= 34102;
-    #200;
-    $display("%d", updated_value);
-    
-    $display("showing RAM status");
-    $display("hash table1");
-    for(i = 0; i<11; i= i+1) begin
-        $display("%d    %d", ram_name_HASH_1[i], ram_name_HASH_1_VALADD[i]);
-    end
-    $display("hash table2");
-    for(i = 0; i<22; i= i+1) begin
-        $display("%d    %d", ram_name_HASH_2[i], ram_name_HASH_2_VALADD[i]);
-    end
-    $display("valadd    val");
-    for(i= 0; i<20; i = i+1) begin
-        $display("%d    %d", i, ram_name_VALUE[i]);
-    end
-    */
-    
-    //$display("%d", ram_name_VALUE[10]);
 	
 end
 
