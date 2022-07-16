@@ -1,5 +1,5 @@
 `timescale 1ns/1ns
-`include "hashfunc.v"
+//`include "hashfunc.v"
 module create_bram
 	#(
 		parameter RAM_WIDTH 		= 32,
@@ -37,14 +37,16 @@ module create_bram
 
    reg [31:0] key_in;
    reg [31:0] key_temp;
-   wire [31:0] hash1;
-   wire [31:0] hash2;
+   //wire [31:0] hash1;
+   //wire [31:0] hash2;
+   reg [31:0] hash1;
+   reg [31:0] hash2;
    integer i;
    reg term_flag;
    reg [31:0] val_add_temp1;
    reg [31:0] val_add_temp2;
 
-   hashfunc aat(.key(key_in), .hash1(hash1), .hash2(hash2));
+   //hashfunc aat(.key(key_in), .hash1(hash1), .hash2(hash2));
 
    (* RAM_STYLE="BLOCK" *)
    reg [RAM_WIDTH-1:0] ram_name_HASH_1 [(2**RAM_ADDR_BITS)-1:0];
@@ -71,7 +73,9 @@ module create_bram
     
    always @(key or signal or transact_kind or transact_value) begin
       key_in = key;
-      #100;
+      hash1=((((key_in*91)%100)*11)-(((key_in*91)%100)*11)%100)/100;
+      hash2=((((key_in*45)%100)*22)-(((key_in*45)%100)*22)%100)/100;
+      //#10;
       
       /*
       $display("showing RAM status");
@@ -164,7 +168,9 @@ module create_bram
                   //$display("%d", key_in);
 
                   key_in = key_temp;
-                  #10;
+                  //#10;
+                  hash1=((((key_in*91)%100)*11)-(((key_in*91)%100)*11)%100)/100;
+                  hash2=((((key_in*45)%100)*22)-(((key_in*45)%100)*22)%100)/100;
                   //$display("%d", hash2);
                   //$display("%d", key_in);
                   val_add_temp1 = val_add_temp2;
@@ -200,7 +206,9 @@ module create_bram
                      ram_name_HASH_2[hash2] = key_in;
                      ram_name_HASH_2_VALADD[hash2] = val_add_temp1;
                      key_in = key_temp;
-                     #10;
+                     //#10;
+                     hash1=((((key_in*91)%100)*11)-(((key_in*91)%100)*11)%100)/100;
+                     hash2=((((key_in*45)%100)*22)-(((key_in*45)%100)*22)%100)/100;
                      val_add_temp1 = val_add_temp2;
                   end
                end
