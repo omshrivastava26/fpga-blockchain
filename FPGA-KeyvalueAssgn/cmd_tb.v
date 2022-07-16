@@ -30,6 +30,9 @@ initial begin
     $dumpfile("check.vcd");
     $dumpvars(0,tb);
 
+    $monitor("%d", rec.updated_value);
+    //for refer
+    /*
     #freq read_enable=0; bus_value=3;
     #freq  read_enable=1;
 
@@ -47,8 +50,89 @@ initial begin
 
     #freq read_enable=0; bus_value=0;
     #freq read_enable=1;
+    */
 
-    #freq #freq #freq #30000 $monitor("%d", rec.updated_value);
+    //for transfer
+    /*
+
+    #freq read_enable=0; bus_value=2;
+    #freq read_enable=1;
+
+    #freq read_enable=0; bus_value=0;
+    #freq read_enable=1;
+
+    #freq read_enable=0; bus_value=0;
+    #freq read_enable=1;
+
+    #freq read_enable=0; bus_value=1;
+    #freq read_enable=1;
+
+    #freq read_enable=0; bus_value=23;
+    #freq read_enable=1;
+
+    #freq read_enable=0; bus_value=0;
+    #freq read_enable=1;
+
+    #freq read_enable=0; bus_value=0;
+    #freq read_enable=1;
+
+    #freq read_enable=0; bus_value=0;
+    #freq read_enable=1;
+
+    #freq read_enable=0; bus_value=19;
+    #freq read_enable=1;
+
+    #freq read_enable=0; bus_value=0;
+    #freq read_enable=1;
+
+    #freq read_enable=0; bus_value=0;
+    #freq read_enable=1;
+
+    #freq read_enable=0; bus_value=0;
+    #freq read_enable=1;
+
+    #freq read_enable=0; bus_value=100;
+    #freq read_enable=1;
+
+    #freq read_enable=0; bus_value=0;
+    #freq read_enable=1;
+    */
+
+    //for issue
+    ///*
+    #freq read_enable=0; bus_value=0;
+    #freq read_enable=1;
+
+    #freq read_enable=0; bus_value=0;
+    #freq read_enable=1;
+
+    #freq read_enable=0; bus_value=0;
+    #freq read_enable=1;
+
+    #freq read_enable=0; bus_value=2;
+    #freq read_enable=1;
+
+    #freq read_enable=0; bus_value=12;
+    #freq read_enable=1;
+
+    #freq read_enable=0; bus_value=0;
+    #freq read_enable=1;
+
+    #freq read_enable=0; bus_value=0;
+    #freq read_enable=1;
+
+    #freq read_enable=0; bus_value=0;
+    #freq read_enable=1;
+
+    #freq read_enable=0; bus_value=100;
+    #freq read_enable=1;
+
+    #freq read_enable=0; bus_value=0;
+    #freq read_enable=1;
+    //*/
+
+    #freq #freq #freq #30000;
+    //$display("%d", rec.updated_value);
     $finish;
 
 

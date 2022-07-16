@@ -78,10 +78,10 @@ module extractor (
 
     reciever rec(dcom, clk, tick_in, bus, newbyt);
 
-    refer ref(bus_refer, newbyt, signal, key);
-    create crt(bus_create);
-    issue isu(bus_issue);
-    transfer tfr(bus_transfer);
+    //refer ref(bus_refer, newbyt_ref, signal, key);
+    create crt(bus_create, newbyt_crt, signal, key, value, tick_in);
+    //issue isu(bus_issue, newbyt_isu, signal, key, transact_kind, transact_value, tick_in);
+    //transfer tfr(bus_transfer, newbyt_tfr, signal, key, transact_kind, transact_value, tick_in);
 
     create_bram
     #(

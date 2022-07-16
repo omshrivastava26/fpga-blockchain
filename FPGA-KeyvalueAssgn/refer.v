@@ -27,26 +27,27 @@ module refer (
                 init2 = 1;
             end
             else begin
-                if(init3 == 0) begin
-                    init3 = 1;
-                end
+                //if(init3 == 0) begin
+                //    init3 = 1;
+                //end
             //$display("refer");
-                else begin
+                //else begin
                     if(i < 4) begin
-                        //$display("byte %d", byte);
-                        //$display("i %d", i);
+                        $display("byte %d", byte);
+                        $display("i %d", i);
                         packet[i] = byte;
-                        //$display("%d", packet[i]);
+                        $display("%d", packet[i]);
                         i = i+1;
-                        //$display("%d, new i", i);
-                        //$display("I reach here");
-                        //$display("%d", packet[i]);
+                        $display("%d, new i", i);
+                        $display("I reach here");
+                        $display("%d", packet[i]);
                     end
                     if(i == 4) begin
-                        //$display("do i reach here?");
+                        $display("do i reach here?");
                         trigger = 1;
+                        i = i+1;
                     end
-                end
+                //end
             end
         end
     end
