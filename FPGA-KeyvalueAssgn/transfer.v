@@ -45,17 +45,17 @@ module transfer (
             //$display("refer");
                 //else begin
                     if(i < 12) begin
-                        $display("byte %d", byte);
-                        $display("i %d", i);
+                        //$display("byte %d", byte);
+                        //$display("i %d", i);
                         packet[i] = byte;
-                        $display("%d", packet[i]);
+                        //$display("%d", packet[i]);
                         i = i+1;
-                        $display("%d, new i", i);
-                        $display("I reach here");
-                        $display("%d", packet[i]);
+                        //$display("%d, new i", i);
+                        //$display("I reach here");
+                        //$display("%d", packet[i]);
                     end
                     if(i == 12) begin
-                        $display("do i reach here?");
+                        //$display("do i reach here?");
                         trigger = 1;
                         i=i+1;
                     end
@@ -71,7 +71,7 @@ module transfer (
         end
         else begin
         if(doneflag == 0) begin
-            $display("hello");
+            //$display("hello");
         signal= 2;
         transact_kind = 0;
         key[31:24] = packet[0];
@@ -82,7 +82,10 @@ module transfer (
         transact_value[23:16] = packet[9];
         transact_value[15:8] = packet[10];
         transact_value[7:0] = packet[11];
-        $display("%d", key);
+        $display("Debited from key %d an amount of %d", key, transact_value);
+        $display("Remaining balance:");
+        //$display("%d", key);
+        //$display("amount %d to", transact_value);
         doneflag = 1;
         end
         else begin
@@ -97,7 +100,8 @@ module transfer (
         transact_value[23:16] = packet[9];
         transact_value[15:8] = packet[10];
         transact_value[7:0] = packet[11];
-        $display("%d", key);
+        $display("Credited to key %d", key);
+        $display("New balance:");
         doneflag2 = 1;
         end
         end

@@ -33,17 +33,17 @@ module refer (
             //$display("refer");
                 //else begin
                     if(i < 4) begin
-                        $display("byte %d", byte);
-                        $display("i %d", i);
+                        //$display("byte %d", byte);
+                        //$display("i %d", i);
                         packet[i] = byte;
-                        $display("%d", packet[i]);
+                        //$display("%d", packet[i]);
                         i = i+1;
-                        $display("%d, new i", i);
-                        $display("I reach here");
-                        $display("%d", packet[i]);
+                        //$display("%d, new i", i);
+                        //$display("I reach here");
+                        //$display("%d", packet[i]);
                     end
                     if(i == 4) begin
-                        $display("do i reach here?");
+                        //$display("do i reach here?");
                         trigger = 1;
                         i = i+1;
                     end
@@ -58,7 +58,8 @@ module refer (
         key[23:16] = packet[1];
         key[15:8] = packet[2];
         key[7:0] = packet[3];
-        $display("%d", key);
+        $display("Referring %d", key);
+        //$display("%d", key);
     end
 
 endmodule

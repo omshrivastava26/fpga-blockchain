@@ -45,17 +45,17 @@ module create (
             //$display("refer");
                 //else begin
                     if(i < 8) begin
-                        $display("byte %d", byte);
-                        $display("i %d", i);
+                        //$display("byte %d", byte);
+                        //$display("i %d", i);
                         packet[i] = byte;
-                        $display("%d", packet[i]);
+                        //$display("%d", packet[i]);
                         i = i+1;
-                        $display("%d, new i", i);
-                        $display("I reach here");
-                        $display("%d", packet[i]);
+                        //$display("%d, new i", i);
+                        //$display("I reach here");
+                        //$display("%d", packet[i]);
                     end
                     if(i == 8) begin
-                        $display("do i reach here?");
+                        //$display("do i reach here?");
                         trigger = 1;
                         i=i+1;
                     end
@@ -71,7 +71,7 @@ module create (
         end
         else begin
         if(doneflag == 0) begin
-            $display("hello");
+            //$display("hello");
         signal= 1;
         //transact_kind = 1;
         key[31:24] = packet[0];
@@ -82,7 +82,9 @@ module create (
         value[23:16] = packet[5];
         value[15:8] = packet[6];
         value[7:0] = packet[7];
-        $display("%d", key);
+        $display("Created key %d with opening balance %d", key, value);
+        //$display("%d", key);
+        //$display("with opening balance %d", value);
         doneflag = 1;
         end
         /*else begin

@@ -229,7 +229,7 @@ module create_bram
 
          end else begin
           //transact
-          $display("reached transact");
+          //$display("reached transact");
             if(transact_kind == 1) begin
                //$display("reached the correct transact kind");
                if(ram_name_HASH_1[hash1] == key) begin

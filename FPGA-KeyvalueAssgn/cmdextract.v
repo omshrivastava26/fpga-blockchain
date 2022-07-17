@@ -8,7 +8,8 @@
 module extractor (
     input dcom,
     input clk,
-    input tick_in
+    input tick_in,
+    input reset
 );
 
     parameter RAM_WIDTH = 32;
@@ -32,12 +33,36 @@ module extractor (
     wire newbyt_isu;
     wire newbyt_tfr;
 
-    wire [1:0] signal;
-    wire [31:0] key;
-    wire [31:0] value;
+    reg [1:0] signal;
+    reg [31:0] key;
+    reg [31:0] value;
     wire [31:0] updated_value;
-    wire [31:0] transact_value;
-    wire transact_kind;
+    reg [31:0] transact_value;
+    reg transact_kind;
+
+    wire [1:0] signal_isu;
+    wire [31:0] key_isu;
+    wire [31:0] value_isu;
+    wire [31:0] transact_value_isu;
+    wire transact_kind_isu;
+
+    wire [1:0] signal_ref;
+    wire [31:0] key_ref;
+    wire [31:0] value_ref;
+    wire [31:0] transact_value_ref;
+    wire transact_kind_ref;
+
+    wire [1:0] signal_crt;
+    wire [31:0] key_crt;
+    wire [31:0] value_crt;
+    wire [31:0] transact_value_crt;
+    wire transact_kind_crt;
+
+    wire [1:0] signal_tfr;
+    wire [31:0] key_tfr;
+    wire [31:0] value_tfr;
+    wire [31:0] transact_value_tfr;
+    wire transact_kind_tfr;
 
     assign bus_create[0] = bus[0] & crt_a[0];
     assign bus_create[1] = bus[1] & crt_a[1];
@@ -78,10 +103,10 @@ module extractor (
 
     reciever rec(dcom, clk, tick_in, bus, newbyt);
 
-    //refer ref(bus_refer, newbyt_ref, signal, key);
-    create crt(bus_create, newbyt_crt, signal, key, value, tick_in);
-    //issue isu(bus_issue, newbyt_isu, signal, key, transact_kind, transact_value, tick_in);
-    //transfer tfr(bus_transfer, newbyt_tfr, signal, key, transact_kind, transact_value, tick_in);
+    refer ref(bus_refer, newbyt_ref, signal_ref, key_ref);
+    create crt(bus_create, newbyt_crt, signal_crt, key_crt, value_crt, tick_in);
+    issue isu(bus_issue, newbyt_isu, signal_isu, key_isu, transact_kind_isu, transact_value_isu, tick_in);
+    transfer tfr(bus_transfer, newbyt_tfr, signal_tfr, key_tfr, transact_kind_tfr, transact_value_tfr, tick_in);
 
     create_bram
     #(
@@ -131,7 +156,7 @@ module extractor (
     end
 
     always@(bus) begin
-        if(bus == 0 && flag == 0) begin
+        if(bus == 4 && flag == 0) begin
             //create
             crt_a <= 511;
             flag <= 1;
@@ -153,6 +178,46 @@ module extractor (
         end
     end
 
-    
+    always@(negedge reset) begin
+        init <= 0;
+        i <= 0;
+        ref_a <= 0;
+        isu_a <= 0;
+        crt_a <= 0;
+        tfr_a <= 0;
+        flag <=0;
+        signal <= 2'bzz;
+        key <= 32'bzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz;
+        transact_value <= 32'bzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz;
+        transact_kind <= 32'bzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz;
+        value <= 32'bzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz;
+    end
+
+    always@(signal_ref or key_ref) begin
+        signal = signal_ref;
+        key = key_ref;
+    end
+
+    always@(signal_crt or key_crt or value_crt) begin
+        signal = signal_crt;
+        key = key_crt;
+        value = value_crt;
+    end
+
+    always@(signal_isu or key_isu or transact_value_isu or transact_kind_isu) begin
+        signal = signal_isu;
+        key = key_isu;
+        transact_value = transact_value_isu;
+        transact_kind = transact_kind_isu;
+    end
+
+    always@(signal_tfr or key_tfr or transact_value_tfr or transact_kind_tfr) begin
+        signal = signal_tfr;
+        key = key_tfr;
+        transact_value = transact_value_tfr;
+        transact_kind = transact_kind_tfr;
+    end
+//signal cha reg 0 kar reset block madhe
+//always @ ref chnage etcc.
 
 endmodule

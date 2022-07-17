@@ -13,15 +13,17 @@ time freq = 32000;
 reg ticker;
 reg clock;
 reg read_enable;
+reg reset;
 
 transmitter test (bus_value , clock , ticker , read_enable , signal);
 // receiver_2 rec (signal , ticker , clock , data_out );
-extractor rec (signal , clock , ticker);
+extractor rec (signal , clock , ticker, reset);
 
 initial begin
     clock<=0;
     ticker<=0;
     read_enable<=1;
+    reset <= 0;
 end
 
 
@@ -32,7 +34,8 @@ initial begin
 
     $monitor("%d", rec.updated_value);
     //for refer
-    /*
+    
+    ///*
     #freq read_enable=0; bus_value=3;
     #freq  read_enable=1;
 
@@ -50,10 +53,17 @@ initial begin
 
     #freq read_enable=0; bus_value=0;
     #freq read_enable=1;
-    */
+    //*/
+
+    ///*
+    #16000;
+    reset = ~reset;
+    #16000;
+    reset = ~reset;
+    //*/
 
     //for transfer
-    /*
+    ///*
 
     #freq read_enable=0; bus_value=2;
     #freq read_enable=1;
@@ -96,11 +106,19 @@ initial begin
 
     #freq read_enable=0; bus_value=0;
     #freq read_enable=1;
-    */
+    //*/
 
-    //for issue
+
     ///*
-    #freq read_enable=0; bus_value=0;
+    #16000;
+    reset = ~reset;
+    #16000;
+    reset = ~reset;
+    //*/
+
+    //for create
+    ///*
+    #freq read_enable=0; bus_value=4;
     #freq read_enable=1;
 
     #freq read_enable=0; bus_value=0;
@@ -113,6 +131,44 @@ initial begin
     #freq read_enable=1;
 
     #freq read_enable=0; bus_value=12;
+    #freq read_enable=1;
+
+    #freq read_enable=0; bus_value=0;
+    #freq read_enable=1;
+
+    #freq read_enable=0; bus_value=0;
+    #freq read_enable=1;
+
+    #freq read_enable=0; bus_value=0;
+    #freq read_enable=1;
+
+    #freq read_enable=0; bus_value=100;
+    #freq read_enable=1;
+
+    #freq read_enable=0; bus_value=0;
+    #freq read_enable=1;
+    //*/
+
+    #16000;
+    reset = ~reset;
+    #16000;
+    reset = ~reset;
+
+    //for issue
+    ///*
+    #freq read_enable=0; bus_value=1;
+    #freq read_enable=1;
+
+    #freq read_enable=0; bus_value=0;
+    #freq read_enable=1;
+
+    #freq read_enable=0; bus_value=0;
+    #freq read_enable=1;
+
+    #freq read_enable=0; bus_value=1;
+    #freq read_enable=1;
+
+    #freq read_enable=0; bus_value=23;
     #freq read_enable=1;
 
     #freq read_enable=0; bus_value=0;
