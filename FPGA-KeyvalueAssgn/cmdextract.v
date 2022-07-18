@@ -217,7 +217,5 @@ module extractor (
         transact_value = transact_value_tfr;
         transact_kind = transact_kind_tfr;
     end
-//signal cha reg 0 kar reset block madhe
-//always @ ref chnage etcc.
 
 endmodule
