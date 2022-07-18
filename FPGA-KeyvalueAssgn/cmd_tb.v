@@ -36,6 +36,10 @@ initial begin
     //for refer
     
     ///*
+    #freq;
+    #freq;
+    #100;
+
     #freq read_enable=0; bus_value=3;
     #freq  read_enable=1;
 
@@ -54,7 +58,10 @@ initial begin
     #freq read_enable=0; bus_value=0;
     #freq read_enable=1;
     //*/
-
+    #freq;
+    #freq;
+    #freq;
+    #100;
     ///*
     #16000;
     reset = ~reset;
@@ -64,7 +71,7 @@ initial begin
 
     //for transfer
     ///*
-
+    #7356;
     #freq read_enable=0; bus_value=2;
     #freq read_enable=1;
 
@@ -110,6 +117,7 @@ initial begin
 
 
     ///*
+    #48658;
     #16000;
     reset = ~reset;
     #16000;
@@ -118,6 +126,8 @@ initial begin
 
     //for create
     ///*
+    #5475678;
+
     #freq read_enable=0; bus_value=4;
     #freq read_enable=1;
 

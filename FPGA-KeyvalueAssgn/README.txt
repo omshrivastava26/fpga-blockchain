@@ -34,6 +34,9 @@ key
 initial balance
 trailing zero
 
+
+IGNORE this. No restrictions, it works.
+
 Important note:
 
 While sending multiple commands, the different commands must be such that previous command's zero byte must coincide with the reset signal.
