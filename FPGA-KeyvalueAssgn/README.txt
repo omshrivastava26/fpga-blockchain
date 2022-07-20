@@ -35,7 +35,7 @@ initial balance
 trailing zero
 
 
-IGNORE this. No restrictions, it works.
+IGNORE this important note below. No restrictions, it works.
 
 Important note:
 
