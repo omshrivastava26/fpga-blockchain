@@ -32,6 +32,7 @@ module extractor (
     wire newbyt_ref;
     wire newbyt_isu;
     wire newbyt_tfr;
+    wire [31:0]value_addr;
 
     reg [1:0] signal;
     reg [31:0] key;
